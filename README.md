@@ -11,7 +11,7 @@ A production-grade MERN stack application that helps users track finances, analy
 Built with an **Event-Driven Architecture** to handle heavy workloads and deployed using **CI/CD** pipelines.
 
 ## 🚀 Live Demo
-- **Frontend (Vercel):** [https://your-app-name.vercel.app](https://finance-app-weld-nine.vercel.app/)
+- **Frontend (Vercel):** [https://finance-app-weld-nine.vercel.app](https://finance-app-weld-nine.vercel.app/)
 - **Backend API (Azure):** [https://finance-api-demo-cbh7cvfqctgvcqf3.centralindia-01.azurewebsites.net/api](https://finance-api-demo-cbh7cvfqctgvcqf3.centralindia-01.azurewebsites.net/api)
 
 ---
