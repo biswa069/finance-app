@@ -44,6 +44,7 @@ const connection = new IORedis(redisUrl, {
 export const transactionQueue = new Queue('transaction-upload', { connection });
 
 // 4. WORKER
+// 4. WORKER
 new Worker('transaction-upload', async (job) => {
   const { filePath, userId } = job.data;
   const results: any[] = [];
@@ -76,4 +77,10 @@ new Worker('transaction-upload', async (job) => {
       })
       .on('error', (err) => reject(err));
   });
-}, { connection });
+}, { 
+  connection,                 
+  concurrency: 1,          // ⚡ Limit to 1 job at a time to save connections
+  lockDuration: 60000,     // ⚡ Hold job lock for 60s (reduces renewal traffic)
+  stalledInterval: 60000,  // ⚡ Check for crashed jobs every 60s (Default was 30s) -> SAVES QUOTA
+  drainDelay: 10           // ⚡ Wait 10ms when queue is empty (Default is 5ms) -> SAVES QUOTA
+});
